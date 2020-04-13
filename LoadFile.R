@@ -17,6 +17,8 @@ LoadFile <- function() {
   # only use data from the dates 2007-02-01 and 2007-02-02
   dates <- as.Date(c("2007-02-01", "2007-02-02"), "%Y-%m-%d")
   dataset <- subset(dataset, Date %in% dates)
+  
+  # write selected data into separate file to speed up the plotting scripts
   write.csv(dataset,file="./data/selected.csv", row.names = FALSE)
   }
   result<-read.table("./data/selected.csv", sep=",",header=TRUE, na="?",colClasses=c("character", "character", rep("numeric",7)))
